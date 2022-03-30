@@ -45,8 +45,13 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
 		</dependency>
+		<!--dependency>
+			<groupId>kr.pe.kwonnam.jsp</groupId>
+			<artifactId>jsp-template-inheritance</artifactId>
+			<version>0.3.RELEASE</version>
+			<scope>compile</scope>
+		</dependency-->
 
 
 
