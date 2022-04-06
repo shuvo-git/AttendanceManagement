@@ -10,7 +10,6 @@ import java.util.Collection;
 @Service
 public class BookService
 {
-    //Map<String, Book> books = new HashMap<>();
     private final BookRepository repository;
 
     @Autowired

@@ -1,0 +1,17 @@
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        max:
+          request:
+            size: 100000000
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: new_book_topic
+      auto-offset-reset: earliest
+      properties:
+        spring:
+          json:
+            trusted: packages=*

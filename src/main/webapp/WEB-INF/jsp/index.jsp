@@ -45,15 +45,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header border-0">
-                                    <h3 class="card-title">Products</h3>
-                                    <div class="card-tools">
-                                        <a href="#" class="btn btn-tool btn-sm">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-tool btn-sm">
-                                            <i class="fas fa-bars"></i>
-                                        </a>
-                                    </div>
+                                    <h3 class="card-title">Books</h3>
                                 </div>
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-striped table-valign-middle">
@@ -71,7 +63,7 @@
                                                 <td>
                                                     <img src="<c:url value="/dist/img/prod-3.jpg"/>" alt="Product 1" class="img-circle img-size-32 mr-2">
                                                     Book: ${book.name}
-                                                    <span class="badge bg-danger">NEW</span>
+                                                    <!--span class="badge bg-danger">NEW</span-->
                                                 </td>
                                                 <td>${book.isbn}</td>
                                                 <td>
@@ -123,19 +115,7 @@
         <!-- ./wrapper -->
 
         <!-- REQUIRED SCRIPTS -->
+        <jsp:include page="layouts/js-scripts.jsp"/>
 
-        <!-- JQUERY -->
-        <script src="<c:url value="/plugins/jquery/jquery.min.js"/>"></script>
-        <!-- BOOTSTRAP -->
-        <script src="<c:url value="/plugins/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
-        <!-- ADMIN LTE -->
-        <script src="<c:url value="/dist/js/adminlte.js"/>"></script>
-
-        <!-- OPTIONAL SCRIPTS -->
-        <script src="<c:url value="/plugins/chart.js/Chart.min.js"/>"></script>
-        <!-- ADMINLTE FOR DEMO PURPOSES -->
-        <script src="<c:url value="/dist/js/demo.js"/>"></script>
-        <!-- ADMINLTE DASHBOARD DEMO (THIS IS ONLY FOR DEMO PURPOSES) -->
-        <script src="<c:url value="/dist/js/pages/dashboard3.js"/>"></script>
     </body>
 </html>

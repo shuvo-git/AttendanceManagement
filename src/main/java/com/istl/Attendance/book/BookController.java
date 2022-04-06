@@ -1,5 +1,8 @@
 package com.istl.Attendance.book;
 
+import com.istl.Attendance.config.kafka.KafkaTopics;
+import com.istl.Attendance.services.KafkaProducerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +13,12 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/book")
 public class BookController {
     private final BookService bookService;
+    private final KafkaProducerService kafkaProducerService;
 
-    public BookController(BookService bookService) {
+    @Autowired
+    public BookController(BookService bookService, KafkaProducerService kafkaProducerService) {
         this.bookService = bookService;
+        this.kafkaProducerService = kafkaProducerService;
     }
 
     @GetMapping("/viewBooks")
@@ -30,8 +36,9 @@ public class BookController {
     @PostMapping("/addBook")
     public RedirectView store(@ModelAttribute("book") Book book, RedirectAttributes redirectAttributes) {
         final RedirectView redirectView = new RedirectView("/book/addBook", true);
-        Book savedBook = bookService.addBook(book);
-        redirectAttributes.addFlashAttribute("savedBook", savedBook);
+        kafkaProducerService.sendToKafka(KafkaTopics.NEW_BOOK_TOPIC,book.getIsbn(),book);
+        //Book savedBook = bookService.addBook(book);
+        //redirectAttributes.addFlashAttribute("savedBook", savedBook);
         redirectAttributes.addFlashAttribute("addBookSuccess", true);
         return redirectView;
     }
