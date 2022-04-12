@@ -19,12 +19,27 @@ public class KafkaConsumerService {
     }
 
     @KafkaListener(groupId = "newBookTopicGroup", topics = KafkaTopics.NEW_BOOK_TOPIC)
-    public void listenCaseSubmit(Book object) {
+    public void listennewBookCreate(Book object) {
         log.info("Received: " + object);
         if(object != null)
         {
             log.info("Handling New Book Request");
             bookService.addBook((Book) object);
+            log.info("New Book has been Created.");
+        } else {
+            return;
+        }
+
+    }
+
+    @KafkaListener(groupId = "deleteBookTopicGroup", topics = KafkaTopics.DELETE_BOOK_TOPIC)
+    public void listennewBookDelete(String object) {
+        log.info("Received: " + object);
+        if(object != null)
+        {
+            log.info("Handling Delete Book Request");
+            bookService.deleteBook((String) object);
+            log.info("Book has been Deleted.");
         } else {
             return;
         }

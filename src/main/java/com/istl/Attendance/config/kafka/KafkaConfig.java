@@ -34,4 +34,9 @@ public class KafkaConfig
         return new NewTopic(KafkaTopics.NEW_BOOK_TOPIC,partitionCount,replicationFactor);
     }
 
+    @Bean
+    public NewTopic topicDeleteBook(){
+        return new NewTopic(KafkaTopics.DELETE_BOOK_TOPIC,partitionCount,replicationFactor);
+    }
+
 }

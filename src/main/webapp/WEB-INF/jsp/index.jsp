@@ -46,6 +46,9 @@
                             <div class="card">
                                 <div class="card-header border-0">
                                     <h3 class="card-title">Books</h3>
+                                    <div class="card-tools">
+                                        <a href="<c:url value="/book/report"/>">Generate Report</a>
+                                    </div>
                                 </div>
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-striped table-valign-middle">
@@ -74,9 +77,13 @@
                                                         ${book.author}
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="text-muted">
+                                                    <!--a href="#" class="text-muted">
                                                         <i class="fas fa-search"></i>
-                                                    </a>
+                                                    </a-->
+                                                    <c:url var="action" value="/book/delete/${book.isbn}"/>
+                                                    <form action="${action}" method="POST">
+                                                        <input class="btn btn-outline-info" type="submit" name="submit" value="Delete" />
+                                                    </form>
                                                 </td>
                                             </tr>
                                         </c:forEach>

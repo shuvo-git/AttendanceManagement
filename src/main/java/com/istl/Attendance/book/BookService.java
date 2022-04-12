@@ -29,5 +29,19 @@ public class BookService
         }
     }
 
+    public boolean deleteBook(String isbn){
+        Book book = null;
+        try {
+            book = repository.findById(isbn).orElse(null);
+            if(book==null)
+                return false;
+
+            repository.delete(book);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
 }
