@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 
@@ -65,7 +64,7 @@ public class BookController {
     {
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookService.getBooks());
         JasperReport compileReport = JasperCompileManager.compileReport(
-                this.getClass().getResourceAsStream("/report/report-template1.jrxml"));
+                this.getClass().getResourceAsStream("/report/report-groupby-template2.jrxml"));
 
         HashMap<String, Object> map = new HashMap<>();
         JasperPrint print = JasperFillManager.fillReport(compileReport,map,dataSource);

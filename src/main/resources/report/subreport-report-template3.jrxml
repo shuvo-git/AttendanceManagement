@@ -65,7 +65,7 @@
 
         </band>
     </columnHeader>
-
+    
     <detail>
         <band height="20" splitType="Stretch">
             <textField>
@@ -94,6 +94,7 @@
             </textField>
         </band>
     </detail>
+
 
     <columnFooter>
         <band height="50"/>

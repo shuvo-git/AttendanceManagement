@@ -9,6 +9,49 @@
     <field name="isbn" class="java.lang.String"/>
     <field name="name" class="java.lang.String"/>
     <field name="author" class="java.lang.String"/>
+
+    <group name="Group1">
+        <groupExpression><![CDATA[$F{author}]]></groupExpression>
+        <groupHeader>
+            <band height="41" splitType="Stretch">
+                <staticText>
+                    <reportElement x="0" y="0" width="170" height="41" forecolor="#44a8d4" uuid="97cfd0be-6700-4c61-9574-c9ceb8f53f44"/>
+                    <box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+                        <pen lineWidth="0.3"/>
+                    </box>
+                    <textElement textAlignment="Center" verticalAlignment="Middle">
+                        <font size="14" isBold="true"/>
+                    </textElement>
+                    <text><![CDATA[ISBN]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement x="170" y="0" width="199" height="41" forecolor="#44a8d4" uuid="d73fecdb-c31a-469a-a8f9-94ad1bea2c65"/>
+                    <box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+                        <pen lineWidth="0.3"/>
+                    </box>
+                    <textElement textAlignment="Center" verticalAlignment="Middle">
+                        <font size="14" isBold="true"/>
+                    </textElement>
+                    <text><![CDATA[NAME]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement x="369" y="0" width="186" height="41" forecolor="#44a8d4" uuid="95a01497-3c5f-4c05-850e-cdbd3a40f4b5"/>
+                    <box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+                        <pen lineWidth="0.3"/>
+                    </box>
+                    <textElement textAlignment="Center" verticalAlignment="Middle">
+                        <font size="14" isBold="true"/>
+                    </textElement>
+                    <text><![CDATA[AUTHOR]]></text>
+                </staticText>
+
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band height="15"/>
+        </groupFooter>
+    </group>
+
     <background>
         <band splitType="Stretch"/>
     </background>
@@ -30,8 +73,22 @@
         </band>
     </title>
 
+    <pageHeader>
+        <band height="1" splitType="Stretch"/>
+    </pageHeader>
+
+
+
+
+
+
+
+
+
+
+
     <columnHeader>
-        <band height="41" splitType="Stretch">
+        <!--band height="41" splitType="Stretch">
             <staticText>
                 <reportElement x="0" y="0" width="170" height="41" forecolor="#44a8d4" uuid="97cfd0be-6700-4c61-9574-c9ceb8f53f44"/>
                 <box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
@@ -63,7 +120,8 @@
                 <text><![CDATA[AUTHOR]]></text>
             </staticText>
 
-        </band>
+        </band-->
+        <band splitType="Stretch"/>
     </columnHeader>
 
     <detail>
