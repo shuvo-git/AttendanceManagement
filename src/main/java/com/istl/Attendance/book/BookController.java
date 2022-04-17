@@ -63,10 +63,18 @@ public class BookController {
     public String generateReport() throws FileNotFoundException, JRException
     {
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookService.getBooks());
+
         JasperReport compileReport = JasperCompileManager.compileReport(
-                this.getClass().getResourceAsStream("/report/report-groupby-template2.jrxml"));
+                this.getClass().getResourceAsStream("/report/master_book_report.jrxml"));
+
+        JasperReport compileSubReport = JasperCompileManager.compileReport(
+                this.getClass().getResourceAsStream("/report/detail_book_report.jrxml"));
+
+
 
         HashMap<String, Object> map = new HashMap<>();
+        map.put("subreportParameter", compileSubReport);
+
         JasperPrint print = JasperFillManager.fillReport(compileReport,map,dataSource);
 
         JasperExportManager.exportReportToPdfFile(print,"book_report.pdf");
