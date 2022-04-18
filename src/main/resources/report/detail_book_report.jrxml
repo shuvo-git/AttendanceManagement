@@ -12,10 +12,7 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<parameter name="parameterBookIsbn" class="java.lang.String" isForPrompting="false"/>
-	<queryString language="SQL">
-		<![CDATA[]]>
-	</queryString>
+
 	<field name="isbn" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="isbn"/>
 		<property name="com.jaspersoft.studio.field.label" value="isbn"/>

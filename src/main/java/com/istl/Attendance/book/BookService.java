@@ -1,10 +1,13 @@
 package com.istl.Attendance.book;
 
+import com.istl.Attendance.book.report.BookReportBean;
+import com.istl.Attendance.book.report.BookSubReportBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 @Service
@@ -41,6 +44,31 @@ public class BookService
         } catch (Exception e) {
             return false;
         }
+    }
+
+
+
+    public Collection<BookReportBean> getBookReportBeans(){
+        List<Book> books = repository.findAll();
+
+        Collection<BookReportBean> bookReportBeans = new ArrayList<>();
+
+        for (Book book: books)
+        {
+            List<BookSubReportBean> bookSubReportBeans = new ArrayList<>();
+            bookSubReportBeans.add(new BookSubReportBean(book.getIsbn(),book.getName(),book.getAuthor()));
+
+            BookReportBean tmp = BookReportBean.builder()
+                    .isbn(book.getIsbn())
+                    .name(book.getName())
+                    .author(book.getAuthor())
+                    .subReportBeanList(bookSubReportBeans)
+                    .build();
+
+            bookReportBeans.add(tmp);
+        }
+
+        return bookReportBeans;
     }
 
 

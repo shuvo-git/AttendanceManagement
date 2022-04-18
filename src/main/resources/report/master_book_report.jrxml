@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0-646c68931cebf1a58bc65c4359d1f0ca223c5e94  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="master_book_report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4ea14372-5aff-41e8-aea3-fef4f5459831">
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<!--property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
 	<parameter name="parameterBookIsbn" class="java.lang.String" isForPrompting="false"/>
 	<queryString language="SQL">
 		<![CDATA[]]>
-	</queryString>
-	<field name="isbn" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="isbn"/>
-		<property name="com.jaspersoft.studio.field.label" value="isbn"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="books"/>
-	</field>
-	<field name="name" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="name"/>
-		<property name="com.jaspersoft.studio.field.label" value="name"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="books"/>
-	</field>
+	</queryString-->
+
+	<parameter name="subreportParameter" class="net.sf.jasperreports.engine.base.JRBaseReport" isForPrompting="false"/>
+
+	<field name="isbn" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="subReportBeanList" class="java.util.List"/>
+
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -41,8 +38,12 @@
 					<subreportParameterExpression><![CDATA[$F{isbn}]]></subreportParameterExpression>
 				</subreportParameter>
 				<!--connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression-->
-				<dataSourceExpression></dataSourceExpression>
-				<subreportExpression><![CDATA["src/main/resources/report/detail_book_report.jasper"]]></subreportExpression>
+				<dataSourceExpression>
+					new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
+					($F{subReportBeanList})
+				</dataSourceExpression>
+				<!--subreportExpression><![CDATA["src/main/resources/report/detail_book_report.jasper"]]></subreportExpression-->
+				<subreportExpression>$P{subreportParameter}</subreportExpression>
 			</subreport>
 		</band>
 	</detail>
