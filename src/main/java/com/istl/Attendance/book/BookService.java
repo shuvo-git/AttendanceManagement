@@ -32,6 +32,15 @@ public class BookService
         }
     }
 
+    public List<Book> addBook(List<Book> books){
+        try {
+            return repository.saveAll(books);
+        }
+        catch (Exception e){
+            return null;
+        }
+    }
+
     public boolean deleteBook(String isbn){
         Book book = null;
         try {
